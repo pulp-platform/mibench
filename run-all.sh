@@ -26,9 +26,10 @@ srcdirs="automotive/basicmath
          automotive/qsort
          automotive/susan"
 srcdirs="automotive/basicmath"
-# export CC=/opt/arc-2012-10-30-1517/bin/arc-linux-uclibc-gcc
-export CC=arc-linux-uclibc-gcc
-export RUNIT=run-remote.sh
+
+export CC="riscv64-unknown-elf-gcc"
+#export RUNIT=spike-wrapper-traces.sh
+export RUNIT=spike-wrapper.sh
 
 for d in ${srcdirs}
 do
