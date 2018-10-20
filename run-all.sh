@@ -27,8 +27,10 @@ srcdirs="automotive/basicmath
          automotive/susan"
 srcdirs="automotive/basicmath"
 
-export CC="riscv64-unknown-elf-gcc"
-#export RUNIT=spike-wrapper-traces.sh
+currdir=$(pwd)
+
+export CC="$RISCV/bin/riscv64-unknown-elf-gcc"
+#export RUNIT="spike-wrapper-traces.sh $currdir/traces"
 export RUNIT=spike-wrapper.sh
 
 for d in ${srcdirs}
