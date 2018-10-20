@@ -20,8 +20,7 @@ MAKE=make -f Makefile
 #CC=cc
 #CFLAG= -O
 
-CC=gcc
-CFLAG= -static -O3 -fomit-frame-pointer
+CFLAG= -static -O3
 
 CFLAGS=$(OPTS) $(CFLAG)
 CPP=$(CC) -E
@@ -34,12 +33,12 @@ BF_ENC=bf_enc.o		# normal C version
 #BF_ENC=asm/bx86-sol.o	# solaris format x86 
 #BF_ENC=asm/bx86bsdi.o	# bsdi format x86 
 
-LIBDIR=/usr/local/lib
-BINDIR=/usr/local/bin
-INCDIR=/usr/local/include
-MANDIR=/usr/local/man
-MAN1=1
-MAN3=3
+#LIBDIR=/usr/local/lib
+#BINDIR=/usr/local/bin
+#INCDIR=/usr/local/include
+#MANDIR=/usr/local/man
+#MAN1=1
+#MAN3=3
 SHELL=/bin/sh
 LIBOBJ=bf_skey.o bf_ecb.o $(BF_ENC) bf_cbc.o bf_cfb64.o bf_ofb64.o
 LIBSRC=bf_skey.c bf_ecb.c bf_enc.c bf_cbc.c bf_cfb64.c bf_ofb64.c

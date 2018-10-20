@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # A script to run all the MiBench tests for an embedded target.
 
@@ -21,22 +21,39 @@
 # Franklin Street - Fifth Floor, Boston, MA 02110-1301, USA.
 
 #srcdirs="automotive consumer network office security telecomm"
-srcdirs="automotive/basicmath
-         automotive/bitcount
-         automotive/qsort
-         automotive/susan"
-srcdirs="automotive/basicmath"
+# srcdirs="automotive/basicmath
+#          automotive/bitcount
+#          automotive/qsort
+#          automotive/susan"
 
-currdir=$(pwd)
+SRCDIRS="consumer/jpeg/jpeg-6a telecomm/adpcm/src security/rijndael security/sha telecomm/fft"
 
+
+CURRDIR=$(pwd)
+
+# compiler
 export CC="$RISCV/bin/riscv64-unknown-elf-gcc"
-#export RUNIT="spike-wrapper-traces.sh $currdir/traces"
-export RUNIT=spike-wrapper.sh
+# user large or small tests
+export MIBENCH_FAST=true
 
-for d in ${srcdirs}
+# whether we want tracing
+export MIBENCH_TRACE=false
+
+
+# command to run binaries
+if [ "$MIBENCH_TRACE" = true ] ; then
+    export RUNIT="spike-wrapper-traces.sh $CURRDIR/traces"
+else
+    export RUNIT=spike-wrapper.sh
+fi
+
+# path passed to run scripts in directories
+export MIBENCH_RUN="$CURRDIR/$RUNIT"
+
+for d in ${SRCDIRS}
 do
     echo ${d}
     cd ${d}
     ./run-all.sh
-    cd ..
+    cd ${CURRDIR}
 done

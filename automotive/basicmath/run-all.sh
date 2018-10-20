@@ -25,5 +25,5 @@ make clean
 make
 
 # Run the programs
-../../${RUNIT} ./basicmath_small
-../../${RUNIT} ./basicmath_large
+${MIBENCH_RUN} ./basicmath_small
+${MIBENCH_RUN} ./basicmath_large

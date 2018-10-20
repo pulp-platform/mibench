@@ -11,8 +11,7 @@
 # Also, on Sun machines, in order to use the SPIXTOOLS and SHADE,
 # uncomment this option: -static.
 #
-CC = gcc
-LFLAGS = -mv8
+#LFLAGS = -mv8
 LFLAGS = $(LFLAGS) -static
 #
 # End of addition

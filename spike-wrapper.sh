@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-spike pk $1
+set -x
+spike pk "$1" "${@:2}"
